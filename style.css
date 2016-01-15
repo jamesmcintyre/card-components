@@ -27,6 +27,13 @@ body {
 }
 
 
+#gamemessage {
+  display: inline-block;
+  font-size: 19pt;
+  color: white;
+  margin-left: 14px;
+}
+
 
 
 

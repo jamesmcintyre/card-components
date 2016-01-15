@@ -82,6 +82,7 @@ function hasBusted(currentHand){
   console.log("turn: "+gameState.turntoggle+" total hand: "+currentHand.currentScore+"  onlyNumVals: "+onlyNumVals+"  acesQuantity: "+acesQuantity);
   if (currentHand.currentScore > 21) {
     console.log("You've Busted!")
+    $('#gamemessage').text('You Busted!')
   }
 
 }
