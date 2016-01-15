@@ -62,7 +62,7 @@ function hasBusted(currentHand){
   }
 
   var onlyNumVals = _.without(valsToSum, "A");
-  if (onlyNumVals === []) { var handValueWithoutAces = _.sum(onlyNumVals);
+  if (onlyNumVals !== []) { var handValueWithoutAces = _.sum(onlyNumVals);
   }else{
     handValueWithoutAces = 0;
   }
@@ -75,8 +75,8 @@ function hasBusted(currentHand){
     aceValue == 11;
   }
 
-  currentHand.currentScore = (aceValue * acesQuantity) + handValueWithoutAces;
-
+  currentHand.currentScore = Math.abs(aceValue * acesQuantity) + handValueWithoutAces;
+  //debugger;
   console.log("is this a num?"+currentHand.currentScore);
   // debugger;
   console.log("turn: "+gameState.turntoggle+" total hand: "+currentHand.currentScore+"  onlyNumVals: "+onlyNumVals+"  acesQuantity: "+acesQuantity);
@@ -99,6 +99,7 @@ function playHand(){
   }
 
   while (gameState.dealerHand.currentScore < 17){
+    console.log("current score:"+gameState.dealerHand.currentScore);
     console.log("is this running?");
     gameState.dealerHand.currentCards.push(pullRandomCard(1));
     hasBusted(gameState.dealerHand);
