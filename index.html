@@ -5,11 +5,966 @@
   <title>Cards</title>
 
   <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
   <script src="main.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
+
+<div class="container">
+  <div id="dealercontainer" class="row">
+    <div id="dealerhand" class="col-md-10 col-md-offset-1">
+      <!-- <div id="dealerhand"></div> -->
+    </div>
+  </div>
+  <div id="spacer" class="row"></div>
+  <div id="playercontainer" class="row">
+    <div id="playerhand" class="col-md-10 col-md-offset-1">
+      <!-- <div ></div> -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- CARDS TEMPLATES BELOW -->
+
+  <div id="cards">
+
+    <div class="card two" id="twoofclubs">
+      <div class="front">
+        <div class="corner top">
+          <span class="number">2</span>
+          <span>&#9827;</span>
+        </div>
+
+        <span class="suit top_center">&#9827;</span>
+        <span class="suit bottom_center">&#9827;</span>
+
+        <div class="corner bottom">
+          <span class="number">2</span>
+          <span>&#9827;</span>
+        </div>
+      </div>
+
+      <div class="back">
+
+      </div>
+    </div>
+
+    <div class="card three" id="threeofclubs">
+      <div class="corner top">
+        <span class="number">3</span>
+        <span>&#9827;</span>
+      </div>
+
+      <span class="suit top_center">&#9827;</span>
+      <span class="suit middle_center">&#9827;</span>
+      <span class="suit bottom_center">&#9827;</span>
+
+      <div class="corner bottom">
+        <span class="number">3</span>
+        <span>&#9827;</span>
+      </div>
+    </div>
+
+    <div class="card four" id="fourofclubs">
+      <div class="corner top">
+        <span class="number">4</span>
+        <span>&#9827;</span>
+      </div>
+
+      <span class="suit top_left">&#9827;</span>
+      <span class="suit top_right">&#9827;</span>
+      <span class="suit bottom_left">&#9827;</span>
+      <span class="suit bottom_right">&#9827;</span>
+
+      <div class="corner bottom">
+        <span class="number">4</span>
+        <span>&#9827;</span>
+      </div>
+    </div>
+
+    <div class="card five" id="fiveofclubs">
+      <div class="corner top">
+        <span class="number">5</span>
+        <span>&#9827;</span>
+      </div>
+
+      <span class="suit top_left">&#9827;</span>
+      <span class="suit top_right">&#9827;</span>
+      <span class="suit middle_center">&#9827;</span>
+      <span class="suit bottom_left">&#9827;</span>
+      <span class="suit bottom_right">&#9827;</span>
+
+      <div class="corner bottom">
+        <span class="number">5</span>
+        <span>&#9827;</span>
+      </div>
+    </div>
+
+    <div class="card six" id="sixofclubs">
+      <div class="corner top">
+        <span class="number">6</span>
+        <span>&#9827;</span>
+      </div>
+
+      <span class="suit top_left">&#9827;</span>
+      <span class="suit top_right">&#9827;</span>
+      <span class="suit middle_left">&#9827;</span>
+      <span class="suit middle_right">&#9827;</span>
+      <span class="suit bottom_left">&#9827;</span>
+      <span class="suit bottom_right">&#9827;</span>
+
+      <div class="corner bottom">
+        <span class="number">6</span>
+        <span>&#9827;</span>
+      </div>
+    </div>
+
+    <div class="card seven" id="sevenofclubs">
+      <div class="corner top">
+        <span class="number">7</span>
+        <span>&#9827;</span>
+      </div>
+
+      <span class="suit top_left">&#9827;</span>
+      <span class="suit top_right">&#9827;</span>
+      <span class="suit middle_left">&#9827;</span>
+      <span class="suit middle_top">&#9827;</span>
+      <span class="suit middle_right">&#9827;</span>
+      <span class="suit bottom_left">&#9827;</span>
+      <span class="suit bottom_right">&#9827;</span>
+
+      <div class="corner bottom">
+        <span class="number">7</span>
+        <span>&#9827;</span>
+      </div>
+    </div>
+
+    <div class="card eight" id="eightofclubs">
+      <div class="corner top">
+        <span class="number">8</span>
+        <span>&#9827;</span>
+      </div>
+
+      <span class="suit top_left">&#9827;</span>
+      <span class="suit top_right">&#9827;</span>
+      <span class="suit middle_left">&#9827;</span>
+      <span class="suit middle_top">&#9827;</span>
+      <span class="suit middle_right">&#9827;</span>
+      <span class="suit middle_bottom">&#9827;</span>
+      <span class="suit bottom_left">&#9827;</span>
+      <span class="suit bottom_right">&#9827;</span>
+
+      <div class="corner bottom">
+        <span class="number">8</span>
+        <span>&#9827;</span>
+      </div>
+    </div>
+
+    <div class="card nine" id="nineofclubs">
+      <div class="corner top">
+        <span class="number">9</span>
+        <span>&#9827;</span>
+      </div>
+
+      <span class="suit top_left">&#9827;</span>
+      <span class="suit top_right">&#9827;</span>
+
+      <span class="suit middle_top_left">&#9827;</span>
+      <span class="suit middle_center">&#9827;</span>
+      <span class="suit middle_top_right">&#9827;</span>
+      <span class="suit bottom_left">&#9827;</span>
+      <span class="suit bottom_right">&#9827;</span>
+      <span class="suit middle_bottom_left">&#9827;</span>
+      <span class="suit middle_bottom_right">&#9827;</span>
+
+      <div class="corner bottom">
+        <span class="number">9</span>
+        <span>&#9827;</span>
+      </div>
+    </div>
+
+    <div class="card ten" id="tenofclubs">
+      <div class="corner top">
+        <span class="number">10</span>
+        <span>&#9827;</span>
+      </div>
+
+      <span class="suit top_left">&#9827;</span>
+      <span class="suit top_right">&#9827;</span>
+
+      <span class="suit middle_top_left">&#9827;</span>
+      <span class="suit middle_top_center">&#9827;</span>
+      <span class="suit middle_top_right">&#9827;</span>
+      <span class="suit bottom_left">&#9827;</span>
+      <span class="suit bottom_right">&#9827;</span>
+      <span class="suit middle_bottom_center">&#9827;</span>
+      <span class="suit middle_bottom_left">&#9827;</span>
+      <span class="suit middle_bottom_right">&#9827;</span>
+
+      <div class="corner bottom">
+        <span class="number">10</span>
+        <span>&#9827;</span>
+      </div>
+    </div>
+
+    <div class="card jack" id="jackofclubs">
+      <div class="corner top">
+        <span class="number">J</span>
+        <span>&#9827;</span>
+      </div>
+
+      <span class="suit middle_center">&#9827;</span>
+
+      <div class="corner bottom">
+        <span class="number">J</span>
+        <span>&#9827;</span>
+      </div>
+    </div>
+
+    <div class="card queen" id="queenofclubs">
+      <div class="corner top">
+        <span class="number">Q</span>
+        <span>&#9827;</span>
+      </div>
+
+      <span class="suit middle_center">&#9827;</span>
+
+      <div class="corner bottom">
+        <span class="number">Q</span>
+        <span>&#9827;</span>
+      </div>
+    </div>
+
+    <div class="card king" id="kingofclubs">
+      <div class="corner top">
+        <span class="number">K</span>
+        <span>&#9827;</span>
+      </div>
+
+      <span class="suit middle_center">&#9827;</span>
+
+      <div class="corner bottom">
+        <span class="number">K</span>
+        <span>&#9827;</span>
+      </div>
+    </div>
+
+    <div class="card ace" id="aceofclubs">
+      <div class="corner top">
+        <span class="number">A</span>
+        <span>&#9827;</span>
+      </div>
+
+      <span class="suit middle_center">&#9827;</span>
+
+      <div class="corner bottom">
+        <span class="number">A</span>
+        <span>&#9827;</span>
+      </div>
+    </div>
+
+    <div class="card diamond two" id="twoofdiamonds">
+      <div class="corner top">
+        <span class="number">2</span>
+        <span>&#9830;</span>
+      </div>
+
+      <span class="suit top_center">&#9830;</span>
+      <span class="suit bottom_center">&#9830;</span>
+
+      <div class="corner bottom">
+        <span class="number">2</span>
+        <span>&#9830;</span>
+      </div>
+    </div>
+
+    <div class="card diamond three" id="threeofdiamonds">
+      <div class="corner top">
+        <span class="number">3</span>
+        <span>&#9830;</span>
+      </div>
+
+      <span class="suit top_center">&#9830;</span>
+      <span class="suit middle_center">&#9830;</span>
+      <span class="suit bottom_center">&#9830;</span>
+
+      <div class="corner bottom">
+        <span class="number">3</span>
+        <span>&#9830;</span>
+      </div>
+    </div>
+
+    <div class="card diamond four" id="fourofdiamonds">
+      <div class="corner top">
+        <span class="number">4</span>
+        <span>&#9830;</span>
+      </div>
+
+      <span class="suit top_left">&#9830;</span>
+      <span class="suit top_right">&#9830;</span>
+      <span class="suit bottom_left">&#9830;</span>
+      <span class="suit bottom_right">&#9830;</span>
+
+      <div class="corner bottom">
+        <span class="number">4</span>
+        <span>&#9830;</span>
+      </div>
+    </div>
+
+    <div class="card diamond five" id="fiveofdiamonds">
+      <div class="corner top">
+        <span class="number">5</span>
+        <span>&#9830;</span>
+      </div>
+
+      <span class="suit top_left">&#9830;</span>
+      <span class="suit top_right">&#9830;</span>
+      <span class="suit middle_center">&#9830;</span>
+      <span class="suit bottom_left">&#9830;</span>
+      <span class="suit bottom_right">&#9830;</span>
+
+      <div class="corner bottom">
+        <span class="number">5</span>
+        <span>&#9830;</span>
+      </div>
+    </div>
+
+    <div class="card diamond six" id="sixofdiamonds">
+      <div class="corner top">
+        <span class="number">6</span>
+        <span>&#9830;</span>
+      </div>
+
+      <span class="suit top_left">&#9830;</span>
+      <span class="suit top_right">&#9830;</span>
+      <span class="suit middle_left">&#9830;</span>
+      <span class="suit middle_right">&#9830;</span>
+      <span class="suit bottom_left">&#9830;</span>
+      <span class="suit bottom_right">&#9830;</span>
+
+      <div class="corner bottom">
+        <span class="number">6</span>
+        <span>&#9830;</span>
+      </div>
+    </div>
+
+    <div class="card diamond seven" id="sevenofdiamonds">
+      <div class="corner top">
+        <span class="number">7</span>
+        <span>&#9830;</span>
+      </div>
+
+      <span class="suit top_left">&#9830;</span>
+      <span class="suit top_right">&#9830;</span>
+      <span class="suit middle_left">&#9830;</span>
+      <span class="suit middle_top">&#9830;</span>
+      <span class="suit middle_right">&#9830;</span>
+      <span class="suit bottom_left">&#9830;</span>
+      <span class="suit bottom_right">&#9830;</span>
+
+      <div class="corner bottom">
+        <span class="number">7</span>
+        <span>&#9830;</span>
+      </div>
+    </div>
+
+    <div class="card diamond eight" id="eightofdiamonds">
+      <div class="corner top">
+        <span class="number">8</span>
+        <span>&#9830;</span>
+      </div>
+
+      <span class="suit top_left">&#9830;</span>
+      <span class="suit top_right">&#9830;</span>
+      <span class="suit middle_left">&#9830;</span>
+      <span class="suit middle_top">&#9830;</span>
+      <span class="suit middle_right">&#9830;</span>
+      <span class="suit middle_bottom">&#9830;</span>
+      <span class="suit bottom_left">&#9830;</span>
+      <span class="suit bottom_right">&#9830;</span>
+
+      <div class="corner bottom">
+        <span class="number">8</span>
+        <span>&#9830;</span>
+      </div>
+    </div>
+
+    <div class="card diamond nine" id="nineofdiamonds">
+      <div class="corner top">
+        <span class="number">9</span>
+        <span>&#9830;</span>
+      </div>
+
+      <span class="suit top_left">&#9830;</span>
+      <span class="suit top_right">&#9830;</span>
+
+      <span class="suit middle_top_left">&#9830;</span>
+      <span class="suit middle_center">&#9830;</span>
+      <span class="suit middle_top_right">&#9830;</span>
+      <span class="suit bottom_left">&#9830;</span>
+      <span class="suit bottom_right">&#9830;</span>
+      <span class="suit middle_bottom_left">&#9830;</span>
+      <span class="suit middle_bottom_right">&#9830;</span>
+
+      <div class="corner bottom">
+        <span class="number">9</span>
+        <span>&#9830;</span>
+      </div>
+    </div>
+
+    <div class="card diamond ten" id="tenofdiamonds">
+      <div class="corner top">
+        <span class="number">10</span>
+        <span>&#9830;</span>
+      </div>
+
+      <span class="suit top_left">&#9830;</span>
+      <span class="suit top_right">&#9830;</span>
+
+      <span class="suit middle_top_left">&#9830;</span>
+      <span class="suit middle_top_center">&#9830;</span>
+      <span class="suit middle_top_right">&#9830;</span>
+      <span class="suit bottom_left">&#9830;</span>
+      <span class="suit bottom_right">&#9830;</span>
+      <span class="suit middle_bottom_center">&#9830;</span>
+      <span class="suit middle_bottom_left">&#9830;</span>
+      <span class="suit middle_bottom_right">&#9830;</span>
+
+      <div class="corner bottom">
+        <span class="number">10</span>
+        <span>&#9830;</span>
+      </div>
+    </div>
+
+    <div class="card diamond jack" id="jackofdiamonds">
+      <div class="corner top">
+        <span class="number">J</span>
+        <span>&#9830;</span>
+      </div>
+
+      <span class="suit middle_center">&#9830;</span>
+
+      <div class="corner bottom">
+        <span class="number">J</span>
+        <span>&#9830;</span>
+      </div>
+    </div>
+
+    <div class="card diamond queen" id="queenofdiamonds">
+      <div class="corner top">
+        <span class="number">Q</span>
+        <span>&#9830;</span>
+      </div>
+
+      <span class="suit middle_center">&#9830;</span>
+
+      <div class="corner bottom">
+        <span class="number">Q</span>
+        <span>&#9830;</span>
+      </div>
+    </div>
+
+    <div class="card diamond king" id="kingofdiamonds">
+      <div class="corner top">
+        <span class="number">K</span>
+        <span>&#9830;</span>
+      </div>
+
+      <span class="suit middle_center">&#9830;</span>
+
+      <div class="corner bottom">
+        <span class="number">K</span>
+        <span>&#9830;</span>
+      </div>
+    </div>
+
+    <div class="card diamond ace" id="aceofdiamonds">
+      <div class="corner top">
+        <span class="number">A</span>
+        <span>&#9830;</span>
+      </div>
+
+      <span class="suit middle_center">&#9830;</span>
+
+      <div class="corner bottom">
+        <span class="number">A</span>
+        <span>&#9830;</span>
+      </div>
+    </div>
+
+    <div class="card two" id="twoofspades">
+      <div class="corner top">
+        <span class="number">2</span>
+        <span>&#9824;</span>
+      </div>
+
+      <span class="suit top_center">&#9824;</span>
+      <span class="suit bottom_center">&#9824;</span>
+
+      <div class="corner bottom">
+        <span class="number">2</span>
+        <span>&#9824;</span>
+      </div>
+    </div>
+
+    <div class="card three" id="threeofspades">
+      <div class="corner top">
+        <span class="number">3</span>
+        <span>&#9824;</span>
+      </div>
+
+      <span class="suit top_center">&#9824;</span>
+      <span class="suit middle_center">&#9824;</span>
+      <span class="suit bottom_center">&#9824;</span>
+
+      <div class="corner bottom">
+        <span class="number">3</span>
+        <span>&#9824;</span>
+      </div>
+    </div>
+
+    <div class="card four" id="fourofspades">
+      <div class="corner top">
+        <span class="number">4</span>
+        <span>&#9824;</span>
+      </div>
+
+      <span class="suit top_left">&#9824;</span>
+      <span class="suit top_right">&#9824;</span>
+      <span class="suit bottom_left">&#9824;</span>
+      <span class="suit bottom_right">&#9824;</span>
+
+      <div class="corner bottom">
+        <span class="number">4</span>
+        <span>&#9824;</span>
+      </div>
+    </div>
+
+    <div class="card five" id="fiveofspades">
+      <div class="corner top">
+        <span class="number">5</span>
+        <span>&#9824;</span>
+      </div>
+
+      <span class="suit top_left">&#9824;</span>
+      <span class="suit top_right">&#9824;</span>
+      <span class="suit middle_center">&#9824;</span>
+      <span class="suit bottom_left">&#9824;</span>
+      <span class="suit bottom_right">&#9824;</span>
+
+      <div class="corner bottom">
+        <span class="number">5</span>
+        <span>&#9824;</span>
+      </div>
+    </div>
+
+    <div class="card six" id="sixofspades">
+      <div class="corner top">
+        <span class="number">6</span>
+        <span>&#9824;</span>
+      </div>
+
+      <span class="suit top_left">&#9824;</span>
+      <span class="suit top_right">&#9824;</span>
+      <span class="suit middle_left">&#9824;</span>
+      <span class="suit middle_right">&#9824;</span>
+      <span class="suit bottom_left">&#9824;</span>
+      <span class="suit bottom_right">&#9824;</span>
+
+      <div class="corner bottom">
+        <span class="number">6</span>
+        <span>&#9824;</span>
+      </div>
+    </div>
+
+    <div class="card seven" id="sevenofspades">
+      <div class="corner top">
+        <span class="number">7</span>
+        <span>&#9824;</span>
+      </div>
+
+      <span class="suit top_left">&#9824;</span>
+      <span class="suit top_right">&#9824;</span>
+      <span class="suit middle_left">&#9824;</span>
+      <span class="suit middle_top">&#9824;</span>
+      <span class="suit middle_right">&#9824;</span>
+      <span class="suit bottom_left">&#9824;</span>
+      <span class="suit bottom_right">&#9824;</span>
+
+      <div class="corner bottom">
+        <span class="number">7</span>
+        <span>&#9824;</span>
+      </div>
+    </div>
+
+    <div class="card eight" id="eightofspades">
+      <div class="corner top">
+        <span class="number">8</span>
+        <span>&#9824;</span>
+      </div>
+
+      <span class="suit top_left">&#9824;</span>
+      <span class="suit top_right">&#9824;</span>
+      <span class="suit middle_left">&#9824;</span>
+      <span class="suit middle_top">&#9824;</span>
+      <span class="suit middle_right">&#9824;</span>
+      <span class="suit middle_bottom">&#9824;</span>
+      <span class="suit bottom_left">&#9824;</span>
+      <span class="suit bottom_right">&#9824;</span>
+
+      <div class="corner bottom">
+        <span class="number">8</span>
+        <span>&#9824;</span>
+      </div>
+    </div>
+
+    <div class="card nine" id="nineofspades">
+      <div class="corner top">
+        <span class="number">9</span>
+        <span>&#9824;</span>
+      </div>
+
+      <span class="suit top_left">&#9824;</span>
+      <span class="suit top_right">&#9824;</span>
+
+      <span class="suit middle_top_left">&#9824;</span>
+      <span class="suit middle_center">&#9824;</span>
+      <span class="suit middle_top_right">&#9824;</span>
+      <span class="suit bottom_left">&#9824;</span>
+      <span class="suit bottom_right">&#9824;</span>
+      <span class="suit middle_bottom_left">&#9824;</span>
+      <span class="suit middle_bottom_right">&#9824;</span>
+
+      <div class="corner bottom">
+        <span class="number">9</span>
+        <span>&#9824;</span>
+      </div>
+    </div>
+
+    <div class="card ten" id="tenofspades">
+      <div class="corner top">
+        <span class="number">10</span>
+        <span>&#9824;</span>
+      </div>
+
+      <span class="suit top_left">&#9824;</span>
+      <span class="suit top_right">&#9824;</span>
+
+      <span class="suit middle_top_left">&#9824;</span>
+      <span class="suit middle_top_center">&#9824;</span>
+      <span class="suit middle_top_right">&#9824;</span>
+      <span class="suit bottom_left">&#9824;</span>
+      <span class="suit bottom_right">&#9824;</span>
+      <span class="suit middle_bottom_center">&#9824;</span>
+      <span class="suit middle_bottom_left">&#9824;</span>
+      <span class="suit middle_bottom_right">&#9824;</span>
+
+      <div class="corner bottom">
+        <span class="number">10</span>
+        <span>&#9824;</span>
+      </div>
+    </div>
+
+    <div class="card jack" id="jackofspades">
+      <div class="corner top">
+        <span class="number">J</span>
+        <span>&#9824;</span>
+      </div>
+
+      <span class="suit middle_center">&#9824;</span>
+
+      <div class="corner bottom">
+        <span class="number">J</span>
+        <span>&#9824;</span>
+      </div>
+    </div>
+
+    <div class="card queen" id="queeneofspades">
+      <div class="corner top">
+        <span class="number">Q</span>
+        <span>&#9824;</span>
+      </div>
+
+      <span class="suit middle_center">&#9824;</span>
+
+      <div class="corner bottom">
+        <span class="number">Q</span>
+        <span>&#9824;</span>
+      </div>
+    </div>
+
+    <div class="card king" id="kingofspades">
+      <div class="corner top">
+        <span class="number">K</span>
+        <span>&#9824;</span>
+      </div>
+
+      <span class="suit middle_center">&#9824;</span>
+
+      <div class="corner bottom">
+        <span class="number">K</span>
+        <span>&#9824;</span>
+      </div>
+    </div>
+
+    <div class="card ace" id="aceofspades">
+      <div class="corner top">
+        <span class="number">A</span>
+        <span>&#9824;</span>
+      </div>
+
+      <span class="suit middle_center">&#9824;</span>
+
+      <div class="corner bottom">
+        <span class="number">A</span>
+        <span>&#9824;</span>
+      </div>
+    </div>
+
+    <div class="card heart two" id="twoofhearts">
+      <div class="corner top">
+        <span class="number">2</span>
+        <span>&#9829;</span>
+      </div>
+
+      <span class="suit top_center">&#9829;</span>
+      <span class="suit bottom_center">&#9829;</span>
+
+      <div class="corner bottom">
+        <span class="number">2</span>
+        <span>&#9829;</span>
+      </div>
+    </div>
+
+    <div class="card heart three" id="threeofhearts">
+      <div class="corner top">
+        <span class="number">3</span>
+        <span>&#9829;</span>
+      </div>
+
+      <span class="suit top_center">&#9829;</span>
+      <span class="suit middle_center">&#9829;</span>
+      <span class="suit bottom_center">&#9829;</span>
+
+      <div class="corner bottom">
+        <span class="number">3</span>
+        <span>&#9829;</span>
+      </div>
+    </div>
+
+    <div class="card heart four" id="fourofhearts">
+      <div class="corner top">
+        <span class="number">4</span>
+        <span>&#9829;</span>
+      </div>
+
+      <span class="suit top_left">&#9829;</span>
+      <span class="suit top_right">&#9829;</span>
+      <span class="suit bottom_left">&#9829;</span>
+      <span class="suit bottom_right">&#9829;</span>
+
+      <div class="corner bottom">
+        <span class="number">4</span>
+        <span>&#9829;</span>
+      </div>
+    </div>
+
+    <div class="card heart five" id="fiveofhearts">
+      <div class="corner top">
+        <span class="number">5</span>
+        <span>&#9829;</span>
+      </div>
+
+      <span class="suit top_left">&#9829;</span>
+      <span class="suit top_right">&#9829;</span>
+      <span class="suit middle_center">&#9829;</span>
+      <span class="suit bottom_left">&#9829;</span>
+      <span class="suit bottom_right">&#9829;</span>
+
+      <div class="corner bottom">
+        <span class="number">5</span>
+        <span>&#9829;</span>
+      </div>
+    </div>
+
+    <div class="card heart six" id="sixofhearts">
+      <div class="corner top">
+        <span class="number">6</span>
+        <span>&#9829;</span>
+      </div>
+
+      <span class="suit top_left">&#9829;</span>
+      <span class="suit top_right">&#9829;</span>
+      <span class="suit middle_left">&#9829;</span>
+      <span class="suit middle_right">&#9829;</span>
+      <span class="suit bottom_left">&#9829;</span>
+      <span class="suit bottom_right">&#9829;</span>
+
+      <div class="corner bottom">
+        <span class="number">6</span>
+        <span>&#9829;</span>
+      </div>
+    </div>
+
+    <div class="card heart seven" id="sevenofhearts">
+      <div class="corner top">
+        <span class="number">7</span>
+        <span>&#9829;</span>
+      </div>
+
+      <span class="suit top_left">&#9829;</span>
+      <span class="suit top_right">&#9829;</span>
+      <span class="suit middle_left">&#9829;</span>
+      <span class="suit middle_top">&#9829;</span>
+      <span class="suit middle_right">&#9829;</span>
+      <span class="suit bottom_left">&#9829;</span>
+      <span class="suit bottom_right">&#9829;</span>
+
+      <div class="corner bottom">
+        <span class="number">7</span>
+        <span>&#9829;</span>
+      </div>
+    </div>
+
+    <div class="card heart eight" id="eightofhearts">
+      <div class="corner top">
+        <span class="number">8</span>
+        <span>&#9829;</span>
+      </div>
+
+      <span class="suit top_left">&#9829;</span>
+      <span class="suit top_right">&#9829;</span>
+      <span class="suit middle_left">&#9829;</span>
+      <span class="suit middle_top">&#9829;</span>
+      <span class="suit middle_right">&#9829;</span>
+      <span class="suit middle_bottom">&#9829;</span>
+      <span class="suit bottom_left">&#9829;</span>
+      <span class="suit bottom_right">&#9829;</span>
+
+      <div class="corner bottom">
+        <span class="number">8</span>
+        <span>&#9829;</span>
+      </div>
+    </div>
+
+    <div class="card heart nine" id="nineofhearts">
+      <div class="corner top">
+        <span class="number">9</span>
+        <span>&#9829;</span>
+      </div>
+
+      <span class="suit top_left">&#9829;</span>
+      <span class="suit top_right">&#9829;</span>
+
+      <span class="suit middle_top_left">&#9829;</span>
+      <span class="suit middle_center">&#9829;</span>
+      <span class="suit middle_top_right">&#9829;</span>
+      <span class="suit bottom_left">&#9829;</span>
+      <span class="suit bottom_right">&#9829;</span>
+      <span class="suit middle_bottom_left">&#9829;</span>
+      <span class="suit middle_bottom_right">&#9829;</span>
+
+      <div class="corner bottom">
+        <span class="number">9</span>
+        <span>&#9829;</span>
+      </div>
+    </div>
+
+    <div class="card heart ten" id="tenofhearts">
+      <div class="corner top">
+        <span class="number">10</span>
+        <span>&#9829;</span>
+      </div>
+
+      <span class="suit top_left">&#9829;</span>
+      <span class="suit top_right">&#9829;</span>
+
+      <span class="suit middle_top_left">&#9829;</span>
+      <span class="suit middle_top_center">&#9829;</span>
+      <span class="suit middle_top_right">&#9829;</span>
+      <span class="suit bottom_left">&#9829;</span>
+      <span class="suit bottom_right">&#9829;</span>
+      <span class="suit middle_bottom_center">&#9829;</span>
+      <span class="suit middle_bottom_left">&#9829;</span>
+      <span class="suit middle_bottom_right">&#9829;</span>
+
+      <div class="corner bottom">
+        <span class="number">10</span>
+        <span>&#9829;</span>
+      </div>
+    </div>
+
+    <div class="card heart jack" id="jackofhearts">
+      <div class="corner top">
+        <span class="number">J</span>
+        <span>&#9829;</span>
+      </div>
+
+      <span class="suit middle_center">&#9829;</span>
+
+      <div class="corner bottom">
+        <span class="number">J</span>
+        <span>&#9829;</span>
+      </div>
+    </div>
+
+    <div class="card heart queen" id="queenofhearts">
+      <div class="corner top">
+        <span class="number">Q</span>
+        <span>&#9829;</span>
+      </div>
+
+      <span class="suit middle_center">&#9829;</span>
+
+      <div class="corner bottom">
+        <span class="number">Q</span>
+        <span>&#9829;</span>
+      </div>
+    </div>
+
+    <div class="card heart king" id="kingofhearts">
+      <div class="corner top">
+        <span class="number">K</span>
+        <span>&#9829;</span>
+      </div>
+
+      <span class="suit middle_center">&#9829;</span>
+
+      <div class="corner bottom">
+        <span class="number">K</span>
+        <span>&#9829;</span>
+      </div>
+    </div>
+
+    <div class="card heart ace" id="aceofhearts">
+      <div class="corner top">
+        <span class="number">A</span>
+        <span>&#9829;</span>
+      </div>
+
+      <span class="suit middle_center">&#9829;</span>
+
+      <div class="corner bottom">
+        <span class="number">A</span>
+        <span>&#9829;</span>
+      </div>
+    </div>
+
+    <div class="card heart ace" id="blankcard">
+
+    </div>
+
+    <br class="clear" />
+  </div><!-- #cards -->
 
 </body>
 </html>
