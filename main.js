@@ -87,9 +87,11 @@ function hasBusted(currentHand){
   if (gameState.dealerHand.currentScore >= 17) {
     if (gameState.dealerHand.currentScore > gameState.playerHand.currentScore){
       $('#gamemessage').text('Dealer Won!');
+      gameState.gameover = true;
     }
     else {
       $('#gamemessage').text('You Won!');
+      gameState.gameover = true;
     }
   }
 
@@ -126,6 +128,10 @@ function playHand(){
 
 
 function dealHands(){
+
+  if (gameState.gameover === true){
+    location.reload();
+  }
   var dealerHand = gameState.dealerHand;
   var playerHand = gameState.playerHand;
   dealerHand.currentCards = pullRandomCard(2);
