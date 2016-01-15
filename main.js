@@ -67,7 +67,7 @@ function hasBusted(currentHand){
     handValueWithoutAces = 0;
   }
   var acesQuantity = Math.abs(valsToSum.length - onlyNumVals.length);
-  console.log("is this a num?"+acesQuantity);
+
 
   if (acesQuantity > 0 && handValueWithoutAces+11 > 21){
     aceValue = 1;
@@ -77,11 +77,11 @@ function hasBusted(currentHand){
 
   currentHand.currentScore = Math.abs(aceValue * acesQuantity) + handValueWithoutAces;
   //debugger;
-  console.log("is this a num?"+currentHand.currentScore);
+
   // debugger;
-  console.log("turn: "+gameState.turntoggle+" total hand: "+currentHand.currentScore+"  onlyNumVals: "+onlyNumVals+"  acesQuantity: "+acesQuantity);
+
   if (currentHand.currentScore > 21) {
-    console.log("You've Busted!")
+
     $('#gamemessage').text('You Busted!');
   }
   if (gameState.dealerHand.currentScore >= 17) {
@@ -114,11 +114,9 @@ function playHand(){
   }
 
   while (gameState.dealerHand.currentScore < 17){
-    console.log("current score:"+gameState.dealerHand.currentScore);
-    console.log("is this running?");
     gameState.dealerHand.currentCards.push(pullRandomCard(1));
     hasBusted(gameState.dealerHand);
-    console.log("turn: "+gameState.turntoggle+" total hand: "+gameState.dealerHand.currentScore+"cards : "+gameState.dealerHand.currentCards.length);
+  
 
   }
 
