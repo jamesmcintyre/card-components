@@ -3,12 +3,12 @@ $( document ).ready(init);
 
 function init() {
 
-    dealHands();
-    // $('#searchform').keyup(searchCall);
-    // $(document).on('click', '#delete-contact', removeContact);
-    // $(document).on('click', '#save-new', addContact);
-    // $('div.results').on('click', '.name', sortListName);
-    // loadFromLocal(true);
+
+    $(document).on('click', '#deal', dealHands);
+    $(document).on('click', '#hit', playHand);
+    $(document).on('click', '#stay', playHand);
+
+
 }
 
 var gameState = {
@@ -18,28 +18,6 @@ var gameState = {
 };
 
 
-
-
-
-// var $newDOMresults = [];
-// for (var i = 0; i < arrtoshow.length; i++) {
-//   var $newResult = $('#template').clone().removeAttr('id').addClass('results fadein');
-//   $newResult.find('div.name').text(contactsArray[i].firstname+" "+contactsArray[i].lastname);
-//   $newResult.find('#photo').attr('src', contactsArray[i].image);
-//   $newResult.find('.company').text(contactsArray[i].company);
-//   $newResult.find('.email').text(contactsArray[i].email);
-//   $newResult.find('.phone').text(contactsArray[i].phone);
-//   $newResult.find('.address').text(contactsArray[i].address);
-//   $newResult.find('.group').text(contactsArray[i].group);
-//   $newResult.on('click', '.name', sortListName);
-//   $newResult.on('click', '.company', sortListCompany);
-//   $newResult.on('click', '.email-addy', sortListEmail);
-//   $newResult.on('click', '.phone', sortListPhone);
-//   $newResult.on('click', '.address', sortListAddress);
-//   $newResult.on('click', '.group', sortListGroup);
-//
-//   $newDOMresults.push($newResult);
-// }
 function updateHandDOM(isdeal){
   //update dealer hand display
   $('#dealerhand').children().remove();
@@ -73,15 +51,13 @@ function updateHandDOM(isdeal){
 
 
 function hasBusted(currentHand){
-  //currentHand will be passed gameState.playerHand
+
   var aceValue = 0;
   var valsToSumArray = currentHand.currentCards;
-  //debugger;
-  // var valsToSum = valsToSumArray.map(function(card){
-  //   return card.value;
-  // })
+
   var valsToSum = [];
   for (var i = 0;i<valsToSumArray.length;i++){
+    //debugger
     valsToSum.push(valsToSumArray[i].value)
   }
 
@@ -108,30 +84,28 @@ function hasBusted(currentHand){
     console.log("You've Busted!")
   }
 
-
-  //console.log("total hand: "+totalHandValue+"onlyNumVals: "+onlyNumVals+"acesQuantity: "+acesQuantity);
 }
 
 
 
-function playHand(hitstaytoggle){
-  // var playerHand = ;
-  // var dealerHand = ;
+function playHand(){
 
-  //if player ("true") turn and hitting
-  if (gameState.turntoggle === true && hitstaytoggle === true){
+  // debugger;
+  var hitstaytoggle = $(this).attr('id');
+
+  if (gameState.turntoggle === true && hitstaytoggle === "hit"){
     gameState.playerHand.currentCards.push(pullRandomCard(1));
     hasBusted(gameState.playerHand);
   }
-  //if dealer score < 17 hitting
-  for (;gameState.dealerHand.currentScore < 17;){
+
+  while (gameState.dealerHand.currentScore < 17){
     console.log("is this running?");
     gameState.dealerHand.currentCards.push(pullRandomCard(1));
     hasBusted(gameState.dealerHand);
     console.log("turn: "+gameState.turntoggle+" total hand: "+gameState.dealerHand.currentScore+"cards : "+gameState.dealerHand.currentCards.length);
 
   }
-  //toggle the turn to next player
+
   gameState.turntoggle = !gameState.turntoggle ;
   updateHandDOM();
 }
