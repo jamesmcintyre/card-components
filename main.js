@@ -82,7 +82,15 @@ function hasBusted(currentHand){
   console.log("turn: "+gameState.turntoggle+" total hand: "+currentHand.currentScore+"  onlyNumVals: "+onlyNumVals+"  acesQuantity: "+acesQuantity);
   if (currentHand.currentScore > 21) {
     console.log("You've Busted!")
-    $('#gamemessage').text('You Busted!')
+    $('#gamemessage').text('You Busted!');
+  }
+  if (gameState.dealerHand.currentScore >= 17) {
+    if (gameState.dealerHand.currentScore > gameState.playerHand.currentScore){
+      $('#gamemessage').text('Dealer Won!');
+    }
+    else {
+      $('#gamemessage').text('You Won!');
+    }
   }
 
 }
@@ -97,6 +105,10 @@ function playHand(){
   if (gameState.turntoggle === true && hitstaytoggle === "hit"){
     gameState.playerHand.currentCards.push(pullRandomCard(1));
     hasBusted(gameState.playerHand);
+  }
+
+  if (gameState.dealerHand.currentScore >= 17) {
+    hasBusted(gameState.dealerHand);
   }
 
   while (gameState.dealerHand.currentScore < 17){
